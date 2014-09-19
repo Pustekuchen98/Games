@@ -1,4 +1,6 @@
 Games
 =====
 
-Common small games
+Common small games:
+- Pong: Written in Ruby with Rubygame gem.
+- Snake: Written in JavaScript
