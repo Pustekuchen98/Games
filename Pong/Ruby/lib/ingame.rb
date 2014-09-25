@@ -46,12 +46,12 @@ class InGame
             win 2
         end
          
-        @queue.each do |ev|
-            @player.handle_event ev
-            @enemy.handle_event ev
-            case ev
+        @queue.each do |event|
+            @player.handle_event event
+            @enemy.handle_event event
+            case event
                 when Rubygame::KeyDownEvent
-                    if ev.key == Rubygame::K_Y and @won
+                    if event.key == Rubygame::K_Y and @won
                         # Reset the game
                         @player.center_y @screen.height
                         @enemy.center_y @screen.height
@@ -59,7 +59,7 @@ class InGame
                         @enemy.score = 0
                         @won = false
                     end
-                    if ev.key == Rubygame::K_N and @won
+                    if event.key == Rubygame::K_N and @won
                         Rubygame.quit
                         exit
                     end

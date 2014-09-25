@@ -30,13 +30,13 @@ class Game
     end
          
     def update
-        @queue.peek_each do |ev|
-            case ev
+        @queue.peek_each do |event|
+            case event
                 when Rubygame::QuitEvent
                     Rubygame.quit
                     exit
                 when Rubygame::KeyDownEvent
-                    if ev.key == Rubygame::K_ESCAPE
+                    if event.key == Rubygame::K_ESCAPE
                         @queue.push Rubygame::QuitEvent.new
                     end
             end
