@@ -62,5 +62,5 @@ class Game
 end
  
 g = Game.new
-g.switch_state InGame.new(g)
+g.switch_state Title.new(g)
 g.run!

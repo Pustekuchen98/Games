@@ -63,6 +63,9 @@ class InGame
                         Rubygame.quit
                         exit
                     end
+                    if event.key == Rubygame::K_P and !@won
+                      @game.switch_state Pause.new(@game, self)
+                    end
             end
         end
         if collision? @ball, @player
