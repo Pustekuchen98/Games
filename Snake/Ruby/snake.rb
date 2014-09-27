@@ -9,6 +9,8 @@ class Game
     @queue = Rubygame::EventQueue.new
     @clock = Rubygame::Clock.new
     @clock.target_framerate = 60
+    
+    @background = Background.new @screen.width, @screen.height
   end
   
   def run!
@@ -30,6 +32,51 @@ class Game
   end
   
   def draw
+    @screen.fill [0, 0, 0]
+    @background.draw @screen
+    @screen.flip
+  end
+end
+
+class GameObject
+  attr_accessor :x, :y, :width, :height, :surface
+  
+  def initialize x, y, surface
+    @x = x
+    @y = y
+    @surface = surface
+    @width = surface.width
+    @height = surface.height
+  end
+  
+  def update
+  end
+  
+  def draw screen
+    @surface.blit screen [@x, @y]
+  end
+  
+  def handle_event event
+  end
+end
+
+class Background < GameObject
+  def initialize width, height
+    surface = Rubygame::Surface.new [width, height]
+    
+    # Draw background
+    white = [255, 255, 255]
+     
+    # Top
+    surface.draw_box_s [0, 0], [surface.width, 10], white
+    # Left
+    surface.draw_box_s [0, 0], [10, surface.height], white
+    # Bottom
+    surface.draw_box_s [0, surface.height-10], [surface.width, surface.height], white
+    # Right
+    surface.draw_box_s [surface.width-10, 0], [surface.width, surface.height], white
+    
+    super 0, 0, surface
   end
 end
 
