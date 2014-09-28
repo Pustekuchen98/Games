@@ -10,6 +10,7 @@ class Game
     @clock = Rubygame::Clock.new
     @clock.target_framerate = 60
     
+    @snake = Snake.new 50, 100
     @background = Background.new @screen.width, @screen.height
   end
   
@@ -22,7 +23,9 @@ class Game
   end
   
   def update
+    @snake.update
     @queue.each do |event|
+      @snake.handle_event event
       case event
       when Rubygame::QuitEvent
         Rubygame.quit
@@ -33,7 +36,10 @@ class Game
   
   def draw
     @screen.fill [0, 0, 0]
+    
     @background.draw @screen
+    @snake.draw @screen
+    
     @screen.flip
   end
 end
@@ -52,8 +58,12 @@ class GameObject
   def update
   end
   
+  def center_y h
+    @y = h/2-@height/2
+  end
+  
   def draw screen
-    @surface.blit screen [@x, @y]
+    @surface.blit screen, [@x, @y]
   end
   
   def handle_event event
@@ -77,6 +87,47 @@ class Background < GameObject
     surface.draw_box_s [surface.width-10, 0], [surface.width, surface.height], white
     
     super 0, 0, surface
+  end
+end
+
+class Snake < GameObject
+  def initialize x, y, size
+    @dead = false
+    @segments = []
+    @length = 60
+     = Rubygame::Surface.new [20, @length]
+    surface.fill [255, 255, 255]
+    super x, y, surface
+  end
+  
+  def length
+    @segments.size
+  end
+  
+  def handle_event event
+    case event
+    when Rubygame::KeyDownEvent
+      if event.key == Rubygame::K_UP
+        move_up
+      elsif event.key == Rubygame::K_DOWN
+        move_down
+      elsif event.key == Rubygame::K_LEFT
+        move_left
+      elsif event.key == Rubygame::K_RIGHT
+        move_right
+      end
+  end
+  
+  def move_snake
+    @segments.reverse.each_with_index do |segment, i|
+      if i + 1 == length
+        segment
+  
+  def grow
+    @height += 10
+  end
+  
+  def update
   end
 end
 
