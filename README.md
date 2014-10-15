@@ -1,11 +1,12 @@
 Games
 =====
 
-Common small games:
-- Pong: Written in Ruby with Rubygame gem.
-- Snake: Written in JavaScript
+Common games:
+- Pong: Ruby with Rubygame gem.
+- Snake: JavaScript
+- Chess: Ruby
 
-Ruby Console Games
+Small Games
 - Tictactoe
 - Hangman
 - MineSweeper
