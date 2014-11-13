@@ -6,6 +6,7 @@ Common games:
 - Snake: JavaScript
 - Chess: Ruby
 - Checkers: Ruby
+- Black Jack: Ruby
 
 Small Games
 - Tictactoe
