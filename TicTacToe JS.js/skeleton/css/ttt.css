@@ -1,0 +1,48 @@
+.tile{
+  outline: black solid 1px;
+  width: 150px;
+  height: 150px;
+  float: left;
+  vertical-align: middle;  
+  transition: all 1s ease;
+}
+
+.tile:hover {
+    opacity: 0.5;
+    background-color: grey;
+}
+
+#canvas {
+    width: 450px;
+    margin: 0px auto;
+    outline: black solid 10px;
+}
+
+#canvas:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.x {
+/*    background-color: teal;*/
+    color: teal;
+}
+
+.mark {
+/*    color: whitesmoke;*/
+    font-size: 90px;
+	font-family: "Verdana";
+    text-align: center;
+    vertical-align: middle;
+    height: 130px;
+    padding-top: 20px;
+}
+.o {
+/*    background-color: salmon;*/
+    color: salmon;
+}  
+
+body > h1, p {
+    text-align: center;
+}
