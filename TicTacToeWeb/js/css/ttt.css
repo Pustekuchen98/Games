@@ -46,3 +46,21 @@
 body > h1, p {
     text-align: center;
 }
+
+#info {
+	width: 450px;
+	margin: 0 auto;
+}
+
+#info a {
+	display: inline-block;
+	float: left;
+}
+
+#about {
+	margin-left: 25px;
+}
+
+#code {
+	margin-left: 170px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="./js/css/ttt.css">
+  </head>
+  <body>
+    <script src="./js/js/jquery-2.1.1.js"></script>
+    <script src="./js/js/underscore.js"></script>
+    <script src="./core/ttt-core.js"></script>
+    <script src="./js/js/ttt-view.js"></script>
+    
+    <h1>Tic Tac Toe!</h1>
+	<br>
+    <div id="canvas"></div>
+    
+
+    <script>
+        var game = new TTT.Game;
+        var $canvas = $('#canvas') 
+        var TicTacToe = new TTT.View(game, $canvas)
+        TicTacToe.start();          
+    </script>
+	<br> <br>
+	<div id="info">
+	<a id="about" href="http://linhbui.me">About Linh Bui</a>
+	<a id="code" href="https://github.com/linhbui/TicTacToeWeb">Check Out The Code</a>
+	</div>
+  </body>
+</html>
