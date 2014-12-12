@@ -7,12 +7,16 @@
         this.xDim = xDim;        
         this.yDim = yDim;
         this.asteroids = this.addAsteroids(xDim, yDim);
-        this.ship = new Asteroids.Ship({
-            pos: [200, 200],
-            game: this
-        }) 
     };
     
+    Game.prototype.makeShip = function () {
+        this.ship = new Asteroids.Ship({
+            pos: this.randomPosition(),
+            game: this
+        }) 
+        return this.ship;
+    };
+
     Game.prototype.allObjects = function () {
         return [].concat(this.asteroids).concat([this.ship])
     };
