@@ -31,4 +31,14 @@
         this.pos[1] += this.vel[1];
         this.pos = this.game.wrap(this.pos);
     }
+
+    MovingObject.prototype.isCollidedWith = function (otherObject) {
+        var sum = this.radius + otherObject.radius;
+        var distance = Asteroids.Util.distance(this.pos, otherObject.pos);
+        if (distance - sum < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 })();

@@ -9,10 +9,15 @@
         this.asteroids = this.addAsteroids(xDim, yDim);
     };
     
+    Game.prototype.step = function () {
+        this.moveObjects();
+        this.checkCollisions();
+    };
+
     Game.prototype.addAsteroids = function (xDim, yDim) {
         var asteroids = [];
         var game = this; 
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 3; i++) {
             asteroids.push(
                 Asteroids.Asteroid.randomAsteroid(xDim, yDim, game)
             );
@@ -60,5 +65,21 @@
             y = pos[1];
         }
         return [x, y];
+    };
+
+    Game.prototype.checkCollisions = function () {
+        var game = this;
+        game.asteroids.forEach(function (asteroid1) {
+            game.asteroids.forEach(function (asteroid2) {
+                if (asteroid1 == asteroid2) {
+                    return;
+                }
+
+                if (asteroid1.isCollidedWith(asteroid2)) {
+                    console.log("oops!!!")
+                }
+            })
+        }) 
     }
+
 })();
