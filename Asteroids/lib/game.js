@@ -84,9 +84,13 @@
                 }
 
                 if (obj1.isCollidedWith(obj2)) {
-                    console.log("oops!!!")
-                    game.remove(obj1);
-                    game.remove(obj2);
+                    if (obj2 instanceof Asteroids.Ship) {
+                        obj2.relocate();
+                    } else {
+                        console.log("oops!!!")
+                        game.remove(obj1);
+                        game.remove(obj2);
+                    }
                 }
             })
         }) 
@@ -98,6 +102,12 @@
         var game = this;
         var index = this.asteroids.indexOf(asteroid);
         this.asteroids[index] = new Asteroids.Asteroid.randomAsteroid(xDim, yDim, game);
+    };
+
+    Game.prototype.randomPosition = function () {
+        var x = Math.random() * this.xDim;
+        var y = Math.random() * this.yDim;
+        return [x, y]
     }
 
 })();
