@@ -12,10 +12,10 @@
     
     Game.addAsteroids = function (xDim, yDim) {
         var asteroids = [];
-        
-        for (var i = 0; i < 1000; i++) {
+        var game = this; 
+        for (var i = 0; i < 100; i++) {
             asteroids.push(
-                Asteroids.Asteroid.randomAsteroid(xDim, yDim)
+                Asteroids.Asteroid.randomAsteroid(xDim, yDim, game)
             );
         }
         
@@ -41,6 +41,7 @@
     }
     
     Game.prototype.wrap = function (pos) {
+        var x, y;
         if (pos[0] === 0) {
             x = this.xDim;
             y = Math.abs(pos[1]-this.yDim);
@@ -53,6 +54,9 @@
         } else if (pos[1] === this.yDim) {
             x = Math.abs(pos[0] - this.xDim);
             y = 0;
+        } else {
+            x = pos[0];
+            y = pos[1];
         }
         
         return [x, y];

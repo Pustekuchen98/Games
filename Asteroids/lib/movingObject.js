@@ -29,7 +29,6 @@
     MovingObject.prototype.move = function () {
         this.pos[0] += this.vel[0]; 
         this.pos[1] += this.vel[1];
-        //FINISH THIS LOGIC
-        Asteroids.Game.wrap(this.pos)
+        this.pos = this.game.prototype.wrap(this.pos);
     }
 })();
