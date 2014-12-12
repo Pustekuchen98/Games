@@ -17,7 +17,7 @@
     Game.prototype.addAsteroids = function (xDim, yDim) {
         var asteroids = [];
         var game = this; 
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 5; i++) {
             asteroids.push(
                 Asteroids.Asteroid.randomAsteroid(xDim, yDim, game)
             );
@@ -77,9 +77,19 @@
 
                 if (asteroid1.isCollidedWith(asteroid2)) {
                     console.log("oops!!!")
+                    game.remove(asteroid1);
+                    game.remove(asteroid2);
                 }
             })
         }) 
+    };
+
+    Game.prototype.remove = function (asteroid) {
+        var xDim = this.xDim;
+        var yDim = this.yDim;
+        var game = this;
+        var index = this.asteroids.indexOf(asteroid);
+        this.asteroids[index] = new Asteroids.Asteroid.randomAsteroid(xDim, yDim, game);
     }
 
 })();
