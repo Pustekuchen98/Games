@@ -80,7 +80,10 @@
                 }
                 if (obj1.isCollidedWith(obj2)) {
                     if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
+                        clearInterval(this.game.id);
+                        document.getElementById('death').className = "alert show";
                         obj2.relocate();
+                        
                     } else if (obj1 instanceof Asteroids.Bullet) {
                         obj1.collideWith(obj2);
                     } else if (obj2 instanceof Asteroids.Bullet) {
