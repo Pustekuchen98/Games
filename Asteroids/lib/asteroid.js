@@ -22,8 +22,8 @@
     Asteroid.randomAsteroid = function (maxX, maxY, game) {
         return new Asteroid({
             pos: [maxX * Math.random(), maxY * Math.random()],
-               vel: Asteroids.Util.randomVec(Math.random() * 10),
-               radius: Math.random() * 40,
+               vel: Asteroids.Util.randomVec(Math.random() * 5),
+               radius: Math.random() * (35 - 10) + 10,
                color: Asteroid.randomColor(),
                game: game
         })
