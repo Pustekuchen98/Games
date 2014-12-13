@@ -45,6 +45,8 @@
             pos: this.pos,
             game: this.game
         });
-        this.game.bullets.push(bullet);
+        if (this.game.bullets.length < 15) {
+            this.game.bullets.push(bullet);
+        }
     }
 })();
