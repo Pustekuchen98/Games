@@ -20,12 +20,12 @@
 
     Ship.prototype.power = function (impulse) {
         if (vel[0] * impulse[0] > 0) {
-            this.vel[0] += (int) (impulse[0] * (100.0 - vel[0] * vel[0]) / 100.0);
+            this.vel[0] += (impulse[0] * (100.0 - vel[0] * vel[0]) / 100.0);
         } else {
             this.vel[0] += impulse[0];
         }
         if (vel[1] * impulse[1] > 0) {
-            this.vel[1] += (int) (impulse[1] * (100.0 - vel[1] * vel[1]) / 100.0);
+            this.vel[1] += (impulse[1] * (100.0 - vel[1] * vel[1]) / 100.0);
         } else {
             this.vel[1] += impulse[1];
         }
