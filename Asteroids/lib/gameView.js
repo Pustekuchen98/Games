@@ -32,6 +32,6 @@
             key(k, function () { ship.power(move); });
         });
 
-        //key("space", function () { ship.fireBullet() });
+        key("space", function () { ship.fireBullet() });
     };
 }) ();

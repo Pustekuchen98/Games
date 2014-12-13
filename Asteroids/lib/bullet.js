@@ -21,5 +21,5 @@
         }
     };
 
-    Bullet.prototype.isWrappable = false;
+    //Bullet.prototype.isWrappable = false;
 })();
