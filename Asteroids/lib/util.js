@@ -31,7 +31,7 @@
     Util.dir = function (vec) {
         var norm = Util.norm(vec);
         if (norm === 0) {
-            return [0, 1];
+            return [1, 0];
         }
         return Util.scale(vec, 1 / norm);
     };

@@ -30,7 +30,7 @@
     Game.prototype.addAsteroids = function (xDim, yDim) {
         var asteroids = [];
         var game = this; 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 7; i++) {
             asteroids.push(
                 Asteroids.Asteroid.randomAsteroid(xDim, yDim, game)
             );
