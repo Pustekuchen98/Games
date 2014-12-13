@@ -19,7 +19,15 @@
     };
 
     Ship.prototype.power = function (impulse) {
-        this.vel[0] += impulse[0];
-        this.vel[1] += impulse[1];
+        if (vel[0] * impulse[0] > 0) {
+            this.vel[0] += (int) (impulse[0] * (20.0 - vel[0]) / 20.0)
+        } else {
+            this.vel[0] += impulse[0];
+        }
+        if (vel[1] * impulse[1] > 0) {
+            this.vel[1] += (int) (impulse[1] * (20.0 - vel[1]) / 20.0)
+        } else {
+            this.vel[1] += impulse[1];
+        }
     };
 })();
