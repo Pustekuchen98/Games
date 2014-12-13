@@ -55,6 +55,7 @@
 
 
             function restart () {
+                document.removeEventListener('keydown', restart);
                 document.getElementById('death').className = "alert hidden";
                 new Asteroids.GameView(
                     game,
@@ -62,7 +63,6 @@
                 ).start();
             }
 
-            document.getElementsByClassName("alert show").addEventListener('keydown', restart);
         </script>
     </body>
 </html>
