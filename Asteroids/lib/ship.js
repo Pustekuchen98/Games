@@ -19,10 +19,10 @@
     };
 
     Ship.prototype.power = function (impulse) {
-        if (vel[0] * impulse[0] < 0 || Math.abs(vel[0]) < 10) {
+        if (vel[0] * impulse[0] <= 0 || Math.abs(vel[0]) < 10) {
             this.vel[0] += impulse[0];
         }
-        if (vel[1] * impulse[1] < 0 || Math.abs(vel[1]) < 10) {
+        if (vel[1] * impulse[1] <= 0 || Math.abs(vel[1]) < 10) {
             this.vel[1] += impulse[1];
         }
     };
