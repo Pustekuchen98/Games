@@ -58,24 +58,15 @@
     
     Game.prototype.wrap = function (pos) {
         var x, y;
-        x = this.xDim;
-        y = this.yDim;
-        if (pos[0] < 0) {
-            x = this.xDim;
-            y = Math.abs(pos[1]-this.yDim);
-        } else if (pos[0] > this.xDim) {
-            x = 0;
-            y = Math.abs(pos[1]-this.yDim);
-        } else if (pos[1] < 0) {
-            x = Math.abs(pos[0] - this.xDim);
-            y = this.yDim;
-        } else if (pos[1] > this.yDim) {
-            x = Math.abs(pos[0] - this.xDim);
-            y = 0;
-        } else {
-            x = pos[0];
-            y = pos[1];
-        }
+        x = pos[0];
+        y = pos[1];
+        
+        if (pos[0] < 0) { x = this.xDim; }
+        else if (pos[0] > this.xDim) { x = 0; }
+
+        if (pos[1] < 0) { y = this.yDim; }
+        else if (pos[1] > this.yDim) { y = 0; }
+        
         return [x, y];
     };
 
