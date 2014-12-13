@@ -22,10 +22,18 @@
         this.vel[0] += impulse[0];
         this.vel[1] += impulse[1];
     };
-
+    
+    Ship.prototype.bulletVel = function () {
+        var direction = Asteroids.Util.dir(this.vel);
+        var relativeVel = Asteroids.Util.scale(direction, 15);
+        var bulletVelX = relativeVel[0] + this.vel[0];
+        var bulletVelY = relativeVel[1] + this.vel[1];
+        return [bulletVelX, bulletVelY];
+    };
+    
     Ship.prototype.fireBullet = function () {
         var bullet = new Asteroids.Bullet({
-            vel: this.vel,
+            vel: this.bulletVel(),
             pos: this.pos,
             game: this.game
         });

@@ -78,12 +78,15 @@
                 if (obj1 == obj2) {
                     return;
                 }
-
                 if (obj1.isCollidedWith(obj2)) {
-                    if (obj2 instanceof Asteroids.Ship) {
+                    if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
                         obj2.relocate();
+                    } else if (obj1 instanceof Asteroids.Bullet) {
+                        obj1.collideWith(obj2);
+                    } else if (obj2 instanceof Asteroids.Bullet) {
+                        obj2.collideWith(obj1);
                     } else {
-                        console.log("oops!!!")
+                        console.log("oops!!!");
                         game.remove(obj1);
                         game.remove(obj2);
                     }
