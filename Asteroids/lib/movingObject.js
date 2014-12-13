@@ -37,7 +37,7 @@
 
             ctx.translate(pos[0], pos[1]);
             ctx.rotate(radians);
-            ctx.drawImage(image, pos[0] - radius, pos[1] - radius, 60, 60);
+            ctx.drawImage(image, -radius, -radius, 60, 60);
             ctx.rotate(-radians);
             ctx.translate(-pos[0], -pos[1]);
         }
