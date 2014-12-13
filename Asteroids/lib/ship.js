@@ -8,6 +8,7 @@
         params.vel = params.vel || [0, 0];
         params.color = "#FFFFFF";
         params.imgSrc = Ship.IMAGESRC;
+        params.angle = 0;
         
         Asteroids.MovingObject.call(this, params)
     };

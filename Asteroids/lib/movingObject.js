@@ -32,7 +32,7 @@
         } else {
             var image = this.image;
             var pos = this.pos;
-            var radius = this.radius - 10;
+            var radius = this.radius;
             ctx.drawImage(image, pos[0] - radius, pos[1] - radius, 60, 60);
         }
     }
