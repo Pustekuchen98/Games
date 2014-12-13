@@ -6,10 +6,13 @@
     var Ship = Asteroids.Ship = function (params) {
         params.radius = 15;
         params.vel = params.vel || [0, 0];
-        params.color = "#FFFFFF"
+        params.color = "#FFFFFF";
+        params.imgSrc = Ship.IMAGESRC;
         
         Asteroids.MovingObject.call(this, params)
     };
+
+    Ship.IMAGESRC = "./images/ship.png";
 
     Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
 

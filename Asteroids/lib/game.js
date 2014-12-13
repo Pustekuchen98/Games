@@ -84,7 +84,7 @@
                         document.getElementById('death').className = "alert show";
                         document.addEventListener('keydown', restart);
 
-                        //obj2.relocate();
+                        obj2.relocate();
                         
                     } else if (obj1 instanceof Asteroids.Bullet) {
                         obj1.collideWith(obj2);

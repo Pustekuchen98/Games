@@ -9,21 +9,32 @@
         this.radius = params["radius"];
         this.color = params["color"];
         this.game = params["game"];
+        if (params.imgSrc) {
+            this.image = new Image();
+            this.image.src = params.imgSrc;
+        }
     }
     
     MovingObject.prototype.draw = function (ctx) {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
+        if (!this.image) {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
 
-        ctx.arc(
-          this.pos[0],
-          this.pos[1],
-          this.radius,
-          0,
-          2 * Math.PI
-        );
+            ctx.arc(
+              this.pos[0],
+              this.pos[1],
+              this.radius,
+              0,
+              2 * Math.PI
+            );
 
-        ctx.fill();
+            ctx.fill();
+        } else {
+            var image = this.image;
+            var pos = this.pos;
+            var radius = this.radius - 10;
+            ctx.drawImage(image, pos[0] - radius, pos[1] - radius, 60, 60);
+        }
     }
     
     MovingObject.prototype.move = function () {
