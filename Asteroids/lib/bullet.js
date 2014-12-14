@@ -4,7 +4,7 @@
     }
 
     var Bullet = Asteroids.Bullet = function (options) {
-        options.radius = 2;
+        options.radius = 3;
         options.color = "#FF0000";
 
         Asteroids.MovingObject.call(this, options);
