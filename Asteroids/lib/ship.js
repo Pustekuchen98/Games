@@ -46,9 +46,11 @@
     };
     
     Ship.prototype.fireBullet = function () {
+            var bulletPosX = this.pos[0];
+            var bulletPosY = this.pos[1];
         var bullet = new Asteroids.Bullet({
             vel: this.bulletVel(),
-            pos: this.pos,
+            pos: [bulletPosX, bulletPosY],
             game: this.game
         });
         if (this.game.bullets.length < 15) {

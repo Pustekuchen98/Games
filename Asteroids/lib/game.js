@@ -43,7 +43,7 @@
         ctx.clearRect(0, 0, this.xDim, this.yDim);
         ctx.fillStyle = "#000000";
         ctx.fillRect(0,0, canvasEl.width, canvasEl.height);
-        
+
         this.allObjects().forEach(function (asteroid) {
             asteroid.draw(ctx);
         });
