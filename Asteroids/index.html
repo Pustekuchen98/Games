@@ -9,32 +9,23 @@
         <script type="application/javascript" src="lib/ship.js"></script>
         <script type="application/javascript" src="lib/game.js"></script>
         <script type="application/javascript" src="lib/gameView.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <style type="text/css" media="screen">
-              .alert {
-                color: red;
-                font-weight: bold;
-                margin: 20vh auto;
-                padding: 10px;
-                width: 50vw;
-                font-size: 3em;
-              }
-              
-              .show {
-                  position: absolute;
-                  width: 80%;
-                  padding-left: 10%;
-                  text-align: center;
-              }
-
-              .hidden {
-                display: none;
-              }
         </style>
     </head>
     <body style="margin: 0;">
           <div class="alert hidden" id="death">
-             The ship was hit and you are dead....<br><br>
+             Your ship was hit...<br><br>
              Press any key to continue
+          </div>
+
+          <div class="alert show" id="welcome-message">
+              Welcome to Asteroids Attack! <br> <br>
+              Use arrow keys to turn and move around,<br> and space key to fire bullets <br> <br>
+              Press any key to start 
+          </div>
+          <div class="github">
+              <a href="https://github.com/linhbui/Games/Asteroids">View on Github</a>
           </div>
         <canvas id="game-canvas" height></canvas>
         <script>
@@ -43,23 +34,29 @@
             
             canvasEl.height = window.innerHeight;
             canvasEl.width = window.innerWidth;
+
             var background = new Image();
             background.src = "./images/stars.png";
             // Make sure the image is loaded first otherwise nothing will draw.
             background.onload = function(){
-                ctx.drawImage(background,0,0);   
+                ctx.drawImage(background,0,0,canvasEl.width, canvasEl.height);   
             }
 
             var game = new Asteroids.Game(
                 canvasEl.width,
                 canvasEl.height 
             )
-            new Asteroids.GameView(
-                game,
-                ctx
-            ).start();
+            document.addEventListener('keydown', start)
 
+            function start () {
+                document.removeEventListener('keydown', start);
+                document.getElementById('welcome-message').className = "alert hidden";
+                new Asteroids.GameView(
+                    game,
+                    ctx
+                ).start();
 
+            }
             function restart () {
                 document.removeEventListener('keydown', restart);
                 document.getElementById('death').className = "alert hidden";

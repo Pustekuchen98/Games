@@ -1,0 +1,39 @@
+
+.alert {
+    color: yellow;
+    font-weight: bold;
+    /*margin: 20vh auto;*/
+    width: 100vw;
+    height: 100vh;
+    font-size: 2.5em;
+    font-family: sans-serif;
+    background-image: -webkit-repeating-radial-gradient(center center, rgba(225,225,225,.5), rgba(225,225,225,.5) 1px, transparent 1px, transparent 100%);
+    background-size: 3px 3px;
+}
+
+.show {
+    position: absolute;
+    padding-top: 10%;
+    padding-bottom: 3%;
+    text-align: center;
+}
+
+.github {
+    position: absolute;
+    top: 0;
+    left:80%;
+    background-color: teal;
+    padding: 15px;
+}
+
+.github a {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    font-family: Arial;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
