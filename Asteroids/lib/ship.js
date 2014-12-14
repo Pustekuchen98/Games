@@ -23,10 +23,16 @@
     };
 
     Ship.prototype.power = function (impulse) {
-        if (this.vel[0] * impulse[0] <= 0 || Math.abs(this.vel[0]) < 8) {
+        if (this.vel[0] * impulse[0] > 0) {
+            factor = (100.0 - (impulse[0] * impulse[0])) / 100.0;
+            this.vel[0] += impulse[0] * factor;
+        } else {
             this.vel[0] += impulse[0];
         }
-        if (this.vel[1] * impulse[1] <= 0 || Math.abs(this.vel[1]) < 8) {
+        if (this.vel[1] * impulse[1] > 0) {
+            factor = (100.0 - (impulse[1] * impulse[1])) / 100.0;
+            this.vel[1] += impulse[1] * factor;
+        } else {
             this.vel[1] += impulse[1];
         }
     };

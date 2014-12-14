@@ -36,9 +36,9 @@
             var radians = Math.atan2(this.vel[0], this.vel[1]);
 
             ctx.translate(pos[0], pos[1]);
-            ctx.rotate(radians - Math.PI / 2);
+            ctx.rotate(radians + Math.PI / 2);
             ctx.drawImage(image, -radius, -radius, 60, 60);
-            ctx.rotate(-radians + Math.PI / 2);
+            ctx.rotate(-radians - Math.PI / 2);
             ctx.translate(-pos[0], -pos[1]);
         }
     }
