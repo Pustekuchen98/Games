@@ -42,7 +42,12 @@
             
             canvasEl.height = window.innerHeight;
             canvasEl.width = window.innerWidth;
-            
+            var background = new Image();
+            background.src = "./images/stars.png";
+            // Make sure the image is loaded first otherwise nothing will draw.
+            background.onload = function(){
+                ctx.drawImage(background,0,0);   
+            }
 
             var game = new Asteroids.Game(
                 canvasEl.width,

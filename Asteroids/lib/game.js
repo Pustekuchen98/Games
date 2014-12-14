@@ -41,9 +41,10 @@
     
     Game.prototype.draw = function (ctx) {
         ctx.clearRect(0, 0, this.xDim, this.yDim);
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(0,0, canvasEl.width, canvasEl.height);
+        //ctx.fillStyle = "#000000";
+        //ctx.fillRect(0,0, canvasEl.width, canvasEl.height);
 
+        ctx.drawImage(background,0,0);   
         this.allObjects().forEach(function (asteroid) {
             asteroid.draw(ctx);
         });
