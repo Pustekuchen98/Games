@@ -1,6 +1,6 @@
 Games
 =====
-Feature: Asteroids Attack! [Live] (https://linhbui.github.io/Games/Asteroids)
+**Feature: Asteroids Attack! [Live] (https://linhbui.github.io/Games/Asteroids)**
 
 Common games:
 - Pong: Ruby with Rubygame gem.
