@@ -80,16 +80,6 @@
                             clearInterval(this.id);
                             document.getElementById('death').className = "alert show";
                             document.addEventListener('keydown', restart);
-
-                            //obj2.relocate();
-                                                    
-                        } else if (obj1 instanceof Asteroids.Ship && obj2 instanceof Asteroids.Asteroid) {
-                            clearInterval(this.game.id);
-                            document.getElementById('death').className = "alert show";
-                            document.addEventListener('keydown', restart);
-
-                            obj1.relocate();
-                            
                         } else if (obj1 instanceof Asteroids.Bullet) {
                             obj1.collideWith(obj2);
                         } else if (obj2 instanceof Asteroids.Bullet) {

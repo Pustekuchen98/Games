@@ -14,7 +14,7 @@
     <body style="margin: 0;">
           <div class="alert hidden" id="death">
              Your ship was hit...<br><br>
-             Press any key to continue
+             Press any key to restart
           </div>
 
           <div class="alert show" id="welcome-message">
@@ -55,10 +55,14 @@
                 ).start();
 
             }
+
             function restart () {
                 document.removeEventListener('keydown', restart);
                 document.getElementById('death').className = "alert hidden";
-                game.bullets = [];
+                game = new Asteroids.Game(
+                    canvasEl.width,
+                    canvasEl.height 
+                )
                 new Asteroids.GameView(
                     game,
                     ctx
