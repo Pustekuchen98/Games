@@ -41,8 +41,6 @@
     
     Game.prototype.draw = function (ctx) {
         ctx.clearRect(0, 0, this.xDim, this.yDim);
-        //ctx.fillStyle = "#000000";
-        //ctx.fillRect(0,0, canvasEl.width, canvasEl.height);
 
         ctx.drawImage(background,0,0,this.xDim,this.yDim);   
         this.allObjects().forEach(function (asteroid) {
@@ -52,7 +50,6 @@
     };
     
     Game.prototype.moveObjects = function () {
-        // console.log(this.asteroids);
         this.allObjects().forEach(function (asteroid) {
             asteroid.move();
         });
@@ -98,9 +95,7 @@
                         } else if (obj2 instanceof Asteroids.Bullet) {
                             obj2.collideWith(obj1);
                         } else {
-                            console.log("oops!!!");
-                            game.bounceBack(obj1);
-                            game.bounceBack(obj2);
+                            obj1.collide(obj2);
                         }
                     }
                 }
@@ -132,12 +127,6 @@
             //})
         //}) 
     //};
-
-    Game.prototype.bounceBack = function (asteroid) {
-        debugger
-        asteroid.vel[0] = asteroid.vel[0] * -1;
-        asteroid.vel[1] = asteroid.vel[1] * -1;
-    };
 
     Game.prototype.remove = function (obj) {
         if (obj instanceof Asteroids.Asteroid) {

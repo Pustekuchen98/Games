@@ -21,6 +21,12 @@
         //return color;
     //}
 
+    Asteroid.prototype.collide = function (anotherAsteroid) {
+        var vel = this.vel;
+        this.vel = anotherAsteroid.vel;
+        anotherAsteroid.vel = vel;
+    };
+
     Asteroid.randomAsteroid = function (maxX, maxY, game) {
         return new Asteroid({
             pos: [maxX * Math.random(), maxY * Math.random()],
