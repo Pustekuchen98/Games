@@ -25,7 +25,7 @@
         return new Asteroid({
             pos: [maxX * Math.random(), maxY * Math.random()],
                vel: Asteroids.Util.randomVec(Math.random() * 5),
-               radius: Math.random() * (60 - 20) + 20,
+               radius: Math.random() * (50 - 20) + 20,
                color: "#FFFFFF",
                game: game,
                imgSrc: Asteroid.IMAGESRC

@@ -74,31 +74,69 @@
 
     Game.prototype.checkCollisions = function () {
         var game = this;
-        game.allObjects().forEach(function (obj1) {
-            game.allObjects().forEach(function (obj2) {
-                if (obj1 == obj2) {
-                    return;
-                }
-                if (obj1.isCollidedWith(obj2)) {
-                    if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
-                        clearInterval(this.game.id);
-                        document.getElementById('death').className = "alert show";
-                        document.addEventListener('keydown', restart);
+        for (var i = 0; i < game.allObjects().length; i++) {
+            obj1 = game.allObjects()[i]
+                for (var j = i + 1; j < game.allObjects().length; j++) {
+                    obj2 = game.allObjects()[j];
+                    if (obj1.isCollidedWith(obj2)) {
+                        if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
+                            clearInterval(this.id);
+                            document.getElementById('death').className = "alert show";
+                            document.addEventListener('keydown', restart);
 
-                        obj2.relocate();
-                        
-                    } else if (obj1 instanceof Asteroids.Bullet) {
-                        obj1.collideWith(obj2);
-                    } else if (obj2 instanceof Asteroids.Bullet) {
-                        obj2.collideWith(obj1);
-                    } else {
-                        console.log("oops!!!");
-                        game.remove(obj1);
-                        game.remove(obj2);
+                            //obj2.relocate();
+                                                    
+                        } else if (obj1 instanceof Asteroids.Ship && obj2 instanceof Asteroids.Asteroid) {
+                            clearInterval(this.game.id);
+                            document.getElementById('death').className = "alert show";
+                            document.addEventListener('keydown', restart);
+
+                            obj1.relocate();
+                            
+                        } else if (obj1 instanceof Asteroids.Bullet) {
+                            obj1.collideWith(obj2);
+                        } else if (obj2 instanceof Asteroids.Bullet) {
+                            obj2.collideWith(obj1);
+                        } else {
+                            console.log("oops!!!");
+                            game.bounceBack(obj1);
+                            game.bounceBack(obj2);
+                        }
                     }
                 }
-            })
-        }) 
+            }
+        }
+        //game.allObjects().forEach(function (obj1) {
+            //game.allObjects().forEach(function (obj2) {
+                //if (obj1 == obj2) {
+                    //return;
+                //}
+                //if (obj1.isCollidedWith(obj2)) {
+                    //if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
+                        //clearInterval(this.game.id);
+                        //document.getElementById('death').className = "alert show";
+                        //document.addEventListener('keydown', restart);
+
+                        //obj2.relocate();
+                        
+                    //} else if (obj1 instanceof Asteroids.Bullet) {
+                        //obj1.collideWith(obj2);
+                    //} else if (obj2 instanceof Asteroids.Bullet) {
+                        //obj2.collideWith(obj1);
+                    //} else {
+                        //console.log("oops!!!");
+                        //game.bounceBack(obj1);
+                        //game.bounceBack(obj2);
+                    //}
+                //}
+            //})
+        //}) 
+    //};
+
+    Game.prototype.bounceBack = function (asteroid) {
+        debugger
+        asteroid.vel[0] = asteroid.vel[0] * -1;
+        asteroid.vel[1] = asteroid.vel[1] * -1;
     };
 
     Game.prototype.remove = function (obj) {

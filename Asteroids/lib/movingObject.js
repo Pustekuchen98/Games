@@ -45,7 +45,7 @@
                 var image = this.image;
                 var pos = this.pos;
                 var radius = this.radius;
-                ctx.drawImage(image, pos[0] - radius, pos[1] - radius, radius * 2.5, radius * 2.5);
+                ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
             }
         }
     }
