@@ -94,15 +94,6 @@
             }
         }
     
-    Game.prototype.remove = function (obj) {
-        if (obj instanceof Asteroids.Asteroid) {
-            console.log("nah");
-        } else if (obj instanceof Asteroids.Bullet) {
-            var index = this.bullets.indexOf(obj);
-            this.bullets.splice(index, 1);
-        }
-    };
-
     Game.prototype.randomPosition = function () {
         var x = Math.random() * this.xDim;
         var y = Math.random() * this.yDim;

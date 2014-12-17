@@ -25,14 +25,11 @@
         );
 
         ctx.fill();
-    }
+    };
 
-    //Bullet.prototype.collideWith = function (obj) {
-        //if (obj instanceof Asteroids.Asteroid) {
-            //this.game.remove(this);
-            //this.game.remove(obj);
-        //}
-    //};
+    Bullet.prototype.remove = function () {
+        var index = this.game.bullets.indexOf(this);
+        this.game.bullets.splice(index, 1);
+    };
 
-    //Bullet.prototype.isWrappable = false;
 })();

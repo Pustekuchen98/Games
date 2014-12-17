@@ -13,7 +13,7 @@
     Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
     Asteroid.prototype.gotHitBy = function (bullet) {
-        this.game.remove(bullet);
+        bullet.remove();
         this.explode();
     };
 
