@@ -37,6 +37,14 @@
         setTimeout(function(){ that.remove() }, 2000);
     };
 
+    Asteroid.prototype.remove = function () {
+        var game = this.game;
+        var xDim = game.xDim;
+        var yDim = game.yDim;
+        var index = game.asteroids.indexOf(this);
+        game.asteroids[index] = new Asteroids.Asteroid.randomAsteroid(xDim, yDim, game);
+    };
+
     Asteroid.prototype.collide = function (anotherAsteroid) {
         var vel = this.vel;
         this.vel = anotherAsteroid.vel;

@@ -80,10 +80,12 @@
                             clearInterval(this.id);
                             document.getElementById('death').className = "alert show";
                             document.addEventListener('keydown', restart);
-                        } else if (obj1 instanceof Asteroids.Bullet) {
-                            obj2.gotHitBy(obj1);
-                        } else if (obj2 instanceof Asteroids.Bullet) {
+                        } else if (obj2 instanceof Asteroids.Bullet && obj1 instanceof Asteroids.Asteroid) {
                             obj1.gotHitBy(obj2);
+                        } else if (obj1 instanceof Asteroids.Bullet && obj2 instanceof Asteroids.Ship) {
+                            return; 
+                        } else if (obj1 instanceof Asteroids.Bullet && obj2 instanceof Asteroids.Bullet) {
+                            return; 
                         } else {
                             obj1.collide(obj2);
                         }
@@ -91,40 +93,10 @@
                 }
             }
         }
-        //game.allObjects().forEach(function (obj1) {
-            //game.allObjects().forEach(function (obj2) {
-                //if (obj1 == obj2) {
-                    //return;
-                //}
-                //if (obj1.isCollidedWith(obj2)) {
-                    //if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
-                        //clearInterval(this.game.id);
-                        //document.getElementById('death').className = "alert show";
-                        //document.addEventListener('keydown', restart);
-
-                        //obj2.relocate();
-                        
-                    //} else if (obj1 instanceof Asteroids.Bullet) {
-                        //obj1.collideWith(obj2);
-                    //} else if (obj2 instanceof Asteroids.Bullet) {
-                        //obj2.collideWith(obj1);
-                    //} else {
-                        //console.log("oops!!!");
-                        //game.bounceBack(obj1);
-                        //game.bounceBack(obj2);
-                    //}
-                //}
-            //})
-        //}) 
-    //};
-
+    
     Game.prototype.remove = function (obj) {
         if (obj instanceof Asteroids.Asteroid) {
-            var xDim = this.xDim;
-            var yDim = this.yDim;
-            var game = this;
-            var index = this.asteroids.indexOf(obj);
-            this.asteroids[index] = new Asteroids.Asteroid.randomAsteroid(xDim, yDim, game);
+            console.log("nah");
         } else if (obj instanceof Asteroids.Bullet) {
             var index = this.bullets.indexOf(obj);
             this.bullets.splice(index, 1);
