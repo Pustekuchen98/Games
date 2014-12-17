@@ -12,7 +12,7 @@
     
     Game.prototype.makeShip = function () {
         this.ship = new Asteroids.Ship({
-            pos: this.randomPosition(),
+            pos: [300,200],
             game: this
         }) 
         return this.ship;

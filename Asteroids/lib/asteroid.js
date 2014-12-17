@@ -18,24 +18,50 @@
     };
 
     Asteroid.prototype.draw = function (ctx) {
-        var image = this.image;
-        var pos = this.pos;
-        var radius = this.radius;
-        ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+        if (!this.exploding) {
+            var image = this.image;
+            var pos = this.pos;
+            var radius = this.radius;
+            ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+        } else {
+            this.animateSprite();
+        }
     };
 
     Asteroid.prototype.explode = function () {
-        this.radius = "0";
+        this.spriteRadius = this.radius;
+        this.vel = [0, 0];
+        this.radius = 0;
         this.spriteFrame = 1;
         this.spriteInterval = 0;
-        this.spriteXDIM = 0;
-        this.spriteYDIM = 0;
+        this.spriteSX = 0;
+        this.spriteSY = 0;
         this.explodeImg = new Image();
         this.explodeImg.src = ("./images/explosion.png");
         this.exploding = true;
         var that = this;
         setTimeout(function(){ that.remove() }, 2000);
     };
+
+    Asteroid.prototype.animateSprite = function() {
+        var dx = this.pos[0] - (1.7 * this.spriteRadius);
+        var dy = this.pos[1] - (1.7 * this.spriteRadius);
+        var dw = this.spriteRadius * 3.5;
+        if (this.spriteFrame <= 40) {
+            if (this.spriteInterval % 4 === 0) {
+                this.spriteSX += 93;
+
+                if (this.spriteFrame % 10 === 0) {
+                    this.spriteSX = 0;
+                    this.spriteSY += 100;
+                }
+
+                this.spriteFrame += 1;
+            }
+            this.spriteInterval += 1
+        }
+        ctx.drawImage(this.explodeImg, this.spriteSX, this.spriteSY, 93, 100, dx, dy, dw, dw);
+    }; 
 
     Asteroid.prototype.remove = function () {
         var game = this.game;
