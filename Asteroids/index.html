@@ -17,6 +17,12 @@
              Press any key to restart
           </div>
 
+          <div class="hidden" id="show-points">
+              Points: 
+              <div id="points">
+                 0 
+              </div>
+          </div>
           <div class="alert show" id="welcome-message">
               Welcome to Asteroids Attack! <br> <br>
               Use arrow keys to turn and move around,<br> and space key to fire bullets <br> <br>
@@ -48,7 +54,9 @@
 
             function start () {
                 document.removeEventListener('keydown', start);
-                document.getElementById('welcome-message').className = "alert hidden";
+                document.getElementById("welcome-message").className = "alert hidden";
+                document.getElementById("show-points").className = "";
+                document.getElementById("points").innerHTML = "0";
                 new Asteroids.GameView(
                     game,
                     ctx
@@ -58,7 +66,8 @@
 
             function restart () {
                 document.removeEventListener('keydown', restart);
-                document.getElementById('death').className = "alert hidden";
+                document.getElementById("death").className = "alert hidden";
+                document.getElementById("points").innerHTML = "0";
                 game = new Asteroids.Game(
                     canvasEl.width,
                     canvasEl.height 

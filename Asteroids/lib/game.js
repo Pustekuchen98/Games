@@ -8,6 +8,7 @@
         this.yDim = yDim;
         this.asteroids = this.addAsteroids(xDim, yDim);
         this.bullets = this.bullets || [];
+        this.points = 0;
     };
     
     Game.prototype.makeShip = function () {
@@ -86,6 +87,8 @@
                             }
                         } else if (obj2 instanceof Asteroids.Bullet && obj1 instanceof Asteroids.Asteroid) {
                             obj1.gotHitBy(obj2);
+                            game.points += 10;
+                            document.getElementById("points").innerHTML = game.points;
                         } else if (obj1 instanceof Asteroids.Bullet && obj2 instanceof Asteroids.Ship) {
                             return; 
                         } else if (obj1 instanceof Asteroids.Bullet && obj2 instanceof Asteroids.Bullet) {

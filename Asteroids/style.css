@@ -37,3 +37,16 @@
 .hidden {
     display: none;
 }
+
+#show-points {
+    font-size: 1.5em;
+    color: yellow;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    padding: 15px;
+}
+
+#points {
+    display: inline;
+}
