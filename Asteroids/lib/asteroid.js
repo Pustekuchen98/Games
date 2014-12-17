@@ -6,11 +6,19 @@
     var Asteroid = Asteroids.Asteroid = function (params) {
         Asteroids.MovingObject.call(this, params);
         this.exploding = false;
-    }
+        this.deactivate();
+    };
 
     Asteroid.IMAGESRC = "./images/asteroid.png";
 
     Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
+
+    Asteroid.prototype.deactivate = function () {
+        this.active = false;
+        var that = this;
+        setTimeout(function() { that.active = true }, 3000);
+    };
+
 
     Asteroid.prototype.gotHitBy = function (bullet) {
         bullet.remove();
@@ -22,7 +30,13 @@
             var image = this.image;
             var pos = this.pos;
             var radius = this.radius;
-            ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+            if (this.active) {
+                ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+            } else {
+                ctx.globalAlpha = 0.6;
+                ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+                ctx.globalAlpha = 1;
+            }
         } else {
             this.animateSprite();
         }
@@ -32,6 +46,7 @@
         this.spriteRadius = this.radius;
         this.vel = [0, 0];
         this.radius = 0;
+        this.active = false;
         this.spriteFrame = 1;
         this.spriteInterval = 0;
         this.spriteSX = 0;

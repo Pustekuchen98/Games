@@ -77,9 +77,13 @@
                     obj2 = game.allObjects()[j];
                     if (obj1.isCollidedWith(obj2)) {
                         if (obj2 instanceof Asteroids.Ship && obj1 instanceof Asteroids.Asteroid) {
-                            clearInterval(this.id);
-                            document.getElementById('death').className = "alert show";
-                            document.addEventListener('keydown', restart);
+                            if (!obj1.active) {
+                                return;
+                            } else {
+                                clearInterval(this.id);
+                                document.getElementById('death').className = "alert show";
+                                document.addEventListener('keydown', restart);
+                            }
                         } else if (obj2 instanceof Asteroids.Bullet && obj1 instanceof Asteroids.Asteroid) {
                             obj1.gotHitBy(obj2);
                         } else if (obj1 instanceof Asteroids.Bullet && obj2 instanceof Asteroids.Ship) {
