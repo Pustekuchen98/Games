@@ -12,12 +12,27 @@
 
     Asteroids.Util.inherits(Bullet, Asteroids.MovingObject);
 
-    Bullet.prototype.collideWith = function (obj) {
-        if (obj instanceof Asteroids.Asteroid) {
-            this.game.remove(this);
-            this.game.remove(obj);
-        }
-    };
+    Bullet.prototype.draw = function (ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+
+        ctx.arc(
+          this.pos[0],
+          this.pos[1],
+          this.radius,
+          0,
+          2 * Math.PI
+        );
+
+        ctx.fill();
+    }
+
+    //Bullet.prototype.collideWith = function (obj) {
+        //if (obj instanceof Asteroids.Asteroid) {
+            //this.game.remove(this);
+            //this.game.remove(obj);
+        //}
+    //};
 
     //Bullet.prototype.isWrappable = false;
 })();

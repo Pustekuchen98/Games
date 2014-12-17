@@ -5,21 +5,37 @@
 
     var Asteroid = Asteroids.Asteroid = function (params) {
         Asteroids.MovingObject.call(this, params);
+        this.exploding = false;
     }
 
     Asteroid.IMAGESRC = "./images/asteroid.png";
 
     Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
-    //var HEX_DIGITS = "0123456789ABCDEF";
-    //Asteroid.randomColor = function () {
-        //var color = "#";
-        //for (var i = 0; i < 6; i++) {
-            //color += HEX_DIGITS[Math.floor((Math.random() * 16))];
-        //}
+    Asteroid.prototype.gotHitBy = function (bullet) {
+        this.game.remove(bullet);
+        this.explode();
+    };
 
-        //return color;
-    //}
+    Asteroid.prototype.draw = function (ctx) {
+        var image = this.image;
+        var pos = this.pos;
+        var radius = this.radius;
+        ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
+    };
+
+    Asteroid.prototype.explode = function () {
+        this.radius = "0";
+        this.spriteFrame = 1;
+        this.spriteInterval = 0;
+        this.spriteXDIM = 0;
+        this.spriteYDIM = 0;
+        this.explodeImg = new Image();
+        this.explodeImg.src = ("./images/explosion.png");
+        this.exploding = true;
+        var that = this;
+        setTimeout(function(){ that.remove() }, 2000);
+    };
 
     Asteroid.prototype.collide = function (anotherAsteroid) {
         var vel = this.vel;

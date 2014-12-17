@@ -43,8 +43,8 @@
         ctx.clearRect(0, 0, this.xDim, this.yDim);
 
         ctx.drawImage(background,0,0,this.xDim,this.yDim);   
-        this.allObjects().forEach(function (asteroid) {
-            asteroid.draw(ctx);
+        this.allObjects().forEach(function (obj) {
+            obj.draw(ctx);
         });
         
     };
@@ -81,9 +81,9 @@
                             document.getElementById('death').className = "alert show";
                             document.addEventListener('keydown', restart);
                         } else if (obj1 instanceof Asteroids.Bullet) {
-                            obj1.collideWith(obj2);
+                            obj2.gotHitBy(obj1);
                         } else if (obj2 instanceof Asteroids.Bullet) {
-                            obj2.collideWith(obj1);
+                            obj1.gotHitBy(obj2);
                         } else {
                             obj1.collide(obj2);
                         }

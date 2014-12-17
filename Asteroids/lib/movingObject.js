@@ -15,41 +15,6 @@
         }
     }
     
-    MovingObject.prototype.draw = function (ctx) {
-        if (!this.image) {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-
-            ctx.arc(
-              this.pos[0],
-              this.pos[1],
-              this.radius,
-              0,
-              2 * Math.PI
-            );
-
-            ctx.fill();
-        } else {
-            if (this instanceof Asteroids.Ship) {
-                var image = this.image;
-                var pos = this.pos;
-                var radius = this.radius;
-                var radians = Math.atan2(this.vel[1], this.vel[0]);
-
-                ctx.translate(pos[0], pos[1]);
-                ctx.rotate(radians);
-                ctx.drawImage(image, -radius - 15, -radius - 15, 60, 60);
-                ctx.rotate(-radians);
-                ctx.translate(-pos[0], -pos[1]);
-            } else {
-                var image = this.image;
-                var pos = this.pos;
-                var radius = this.radius;
-                ctx.drawImage(image, pos[0] - (1.7 * radius), pos[1] - (1.7 *radius), radius * 3.5, radius * 3.5);
-            }
-        }
-    }
-    
     MovingObject.prototype.move = function () {
         this.pos[0] += this.vel[0]; 
         this.pos[1] += this.vel[1];
