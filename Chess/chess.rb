@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require_relative "./lib/board"
+require_relative "./lib/player"
 require 'io/console'
 
 class Chess
@@ -41,6 +42,9 @@ class Chess
     @current_board.check_mate?(:white) || @current_board.check_mate?(:black)
   end
 end
+
+c = Chess.new
+c.play
 
 class IllegalMoveError < RuntimeError
 end
